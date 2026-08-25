@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Admit Card | BOESL Mock Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #e0f2f1;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .banner {
+      width: 100%;
+      max-width: 900px;
+      background: linear-gradient(135deg, #00acc1 0%, #00838f 100%);
+      border-radius: 8px 8px 0 0;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .banner h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .banner p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    .card {
+      width: 100%;
+      max-width: 900px;
+      background-color: white;
+      border-radius: 0 0 8px 8px;
+      padding: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h2.title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #00796b;
+      text-align: center;
+      width: 100%;
+      border-bottom: 2px solid #b2dfdb;
+      padding-bottom: 10px;
+    }
+    .warning-box {
+      background-color: #fff9c4;
+      border-left: 5px solid #fbc02d;
+      padding: 15px 20px;
+      margin-bottom: 30px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #f57f17;
+      width: 100%;
+      max-width: 600px;
+    }
+    form {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #444;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus {
+      border-color: #00796b;
+      box-shadow: 0 0 5px rgba(0, 121, 107, 0.2);
+    }
+    /* Captcha Area */
+    .captcha-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px dashed #ccc;
+    }
+    .captcha-box {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 8px;
+      background: linear-gradient(45deg, #e0e0e0 25%, #f5f5f5 25%, #f5f5f5 50%, #e0e0e0 50%, #e0e0e0 75%, #f5f5f5 75%, #f5f5f5 100%);
+      background-size: 20px 20px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      color: #004d40;
+      user-select: none;
+      text-decoration: line-through;
+    }
+    .btn-submit {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .btn-submit:hover {
+      background-color: #004d40;
+    }
+    .home-link {
+      margin-top: 20px;
+      color: #00796b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .home-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Admit Card Print Container */
+    #admitCardPrint {
+      display: none;
+      width: 100%;
+      max-width: 800px;
+      background: white;
+      border: 2px solid #333;
+      padding: 30px;
+      margin-top: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .admit-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #333;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+    .admit-logo {
+      width: 60px;
+      height: 60px;
+      background-color: #f0f0f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #00796b;
+      border: 1px solid #ddd;
+    }
+    .admit-title {
+      text-align: center;
+      flex-grow: 1;
+    }
+    .admit-title h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .admit-title h4 {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 3px;
+    }
+    .admit-body {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 20px;
+    }
+    .admit-details table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .admit-details td {
+      padding: 8px 10px;
+      font-size: 0.95rem;
+      vertical-align: top;
+    }
+    .admit-details td.label {
+      font-weight: 600;
+      width: 40%;
+    }
+    .admit-photo-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    .photo-placeholder {
+      width: 120px;
+      height: 140px;
+      border: 1px solid #333;
+      background-color: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #777;
+    }
+    .signature-placeholder {
+      width: 120px;
+      height: 40px;
+      border: 1px dashed #777;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #777;
+    }
+    .admit-instructions {
+      margin-top: 25px;
+      border-top: 1px solid #ccc;
+      padding-top: 15px;
+    }
+    .admit-instructions h5 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .admit-instructions ul {
+      padding-left: 20px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: #555;
+    }
+    .print-admit-btn {
+      margin-top: 20px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #admitCardPrint, #admitCardPrint * {
+        visibility: visible;
+      }
+      #admitCardPrint {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+      }
+      .print-admit-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <h1>বাংলাদেশ ওভারসিজ এমপ্লয়মেন্ট অ্যান্ড সার্ভিসেস লিঃ (বোয়েসেল)</h1>
+    <p>Bangladesh Overseas Employment and Services Limited (BOESL)</p>
+  </div>
+
+  <div class="card">
+    <h2 class="title">Registration (Download Admit Card)</h2>
+    
+    <div class="warning-box">
+      Please note that you must have paid the exam fee (through bKash) before you can download your admit card.<br>
+      <strong>লক্ষ্য করুন:</strong> আপনার admit card টি ডাউনলোড করার পূর্বে কিন্তু আপনাকে আপনার প্রদেয় পরীক্ষা ফি (বিকাশের মাধ্যমে) পরিশোধ করে আসতে হবে।
+    </div>
+    
+    <form id="admitCardForm">
+      <!-- Submission ID -->
+      <div class="form-group">
+        <label for="submissionId">Submission ID</label>
+        <input type="text" id="submissionId" name="submission_id" required placeholder="Enter Submission ID (e.g. 260900007)">
+      </div>
+      
+      <!-- Passport Number -->
+      <div class="form-group">
+        <label for="passportNo">Passport No.</label>
+        <input type="text" id="passportNo" name="passport" required placeholder="Enter Passport Number">
+      </div>
+      
+      <!-- Captcha -->
+      <div class="form-group">
+        <label>Captcha</label>
+        <div class="captcha-container">
+          <div class="captcha-box" id="captchaVal">y8h7k</div>
+        </div>
+        <input type="text" id="captchaInput" name="captcha" required placeholder="Type the captcha above">
+      </div>
+      
+      <button type="submit" class="btn-submit">Submit</button>
+    </form>
+
+    <!-- Generated Admit Card Preview -->
+    <div id="admitCardPrint">
+      <div class="admit-header">
+        <div class="admit-logo">BOESL</div>
+        <div class="admit-title">
+          <h3>Bangladesh Overseas Employment & Services Ltd. (BOESL)</h3>
+          <h4>EPS-TOPIK Admit Card (Mock Portal)</h4>
+        </div>
+      </div>
+      <div class="admit-body">
+        <div class="admit-details">
+          <table>
+            <tr>
+              <td class="label">Roll Number</td>
+              <td id="admitRoll">10203045</td>
+            </tr>
+            <tr>
+              <td class="label">Submission ID</td>
+              <td id="admitSubId">-</td>
+            </tr>
+            <tr>
+              <td class="label">Passport No.</td>
+              <td id="admitPassport">-</td>
+            </tr>
+            <tr>
+              <td class="label">Candidate Name</td>
+              <td id="admitName">JOHN DOE</td>
+            </tr>
+            <tr>
+              <td class="label">Exam Date & Time</td>
+              <td id="admitDateTime">18 July 2026, 10:00 AM</td>
+            </tr>
+            <tr>
+              <td class="label">Exam Venue</td>
+              <td>BOESL CBT Exam Center, 4th Floor, Probashi Kallyan Bhaban, Dhaka</td>
+            </tr>
+          </table>
+        </div>
+        <div class="admit-photo-box">
+          <div class="photo-placeholder">CANDIDATE PHOTO<br>(270 x 349)</div>
+          <div class="signature-placeholder">CANDIDATE SIGNATURE</div>
+        </div>
+      </div>
+      <div class="admit-instructions">
+        <h5>Important Instructions for Candidates:</h5>
+        <ul>
+          <li>Candidates must bring the original passport and a printed copy of this admit card to the exam hall.</li>
+          <li>Mobile phones, calculators, smartwatches, or any electronic devices are strictly prohibited inside the exam hall.</li>
+          <li>Candidates must report at least 30 minutes before the scheduled exam start time.</li>
+          <li>Any kind of misconduct or use of unfair means will result in immediate disqualification.</li>
+        </ul>
+      </div>
+      <button class="print-admit-btn" onclick="window.print()">Print Admit Card</button>
+    </div>
+
+    <a href="step1.html" class="home-link">← Go back to Home</a>
+  </div>
+
+  <script>
+    // Generate captcha
+    document.addEventListener("DOMContentLoaded", () => {
+      const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+      let captcha = "";
+      for (let i = 0; i < 5; i++) {
+        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById("captchaVal").textContent = captcha;
+
+      // Handle form submit
+      document.getElementById("admitCardForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        
+        const userInput = document.getElementById("captchaInput").value.trim().toLowerCase();
+        const actualCaptcha = document.getElementById("captchaVal").textContent.trim().toLowerCase();
+        
+        if (userInput !== actualCaptcha) {
+          alert("Invalid captcha code. Please try again.");
+          // Reset captcha
+          let newCaptcha = "";
+          for (let i = 0; i < 5; i++) {
+            newCaptcha += chars.charAt(Math.floor(Math.random() * chars.length));
+          }
+          document.getElementById("captchaVal").textContent = newCaptcha;
+          document.getElementById("captchaInput").value = "";
+          return;
+        }
+
+        const subId = document.getElementById("submissionId").value.trim();
+        const passport = document.getElementById("passportNo").value.trim();
+
+        // Fill admit card details
+        document.getElementById("admitSubId").textContent = subId;
+        document.getElementById("admitPassport").textContent = passport.toUpperCase();
+        
+        // Generate random roll number
+        document.getElementById("admitRoll").textContent = "EPS-" + Math.floor(10000000 + Math.random() * 90000000);
+
+        // Show admit card container
+        document.getElementById("admitCardPrint").style.display = "block";
+        document.getElementById("admitCardPrint").scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>

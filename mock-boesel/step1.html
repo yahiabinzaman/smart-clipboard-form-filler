@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOESL Registration Portal | Mock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #e0f2f1;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .banner {
+      width: 100%;
+      max-width: 900px;
+      background: linear-gradient(135deg, #00838f 0%, #004d40 100%);
+      border-radius: 8px 8px 0 0;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .banner h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+    .banner p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    .card {
+      width: 100%;
+      max-width: 900px;
+      background-color: white;
+      border-radius: 0 0 8px 8px;
+      padding: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    h2.title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #00796b;
+      text-align: center;
+      border-bottom: 2px solid #b2dfdb;
+      padding-bottom: 10px;
+    }
+    .info-box {
+      background-color: #e8f5e9;
+      border-left: 5px solid #2e7d32;
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .info-box p {
+      margin-bottom: 8px;
+    }
+    .info-box p:last-child {
+      margin-bottom: 0;
+    }
+    .highlight-yellow {
+      background-color: #fff59d;
+      padding: 2px 5px;
+      font-weight: 600;
+      border-radius: 2px;
+      color: #000;
+    }
+    .terms-container {
+      border: 1px solid #ddd;
+      background-color: #fcfcfc;
+      padding: 20px;
+      max-height: 250px;
+      overflow-y: auto;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #555;
+      border-radius: 4px;
+    }
+    .terms-container p {
+      margin-bottom: 15px;
+    }
+    .terms-container p:last-child {
+      margin-bottom: 0;
+    }
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .btn {
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .btn-submit {
+      background-color: #00796b;
+      color: white;
+    }
+    .btn-submit:hover {
+      background-color: #004d40;
+      transform: translateY(-2px);
+    }
+    .btn-admit {
+      background-color: #00838f;
+      color: white;
+    }
+    .btn-admit:hover {
+      background-color: #005662;
+      transform: translateY(-2px);
+    }
+
+    /* Passport Input View styling */
+    .form-container {
+      display: none;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #444;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus {
+      border-color: #00796b;
+      box-shadow: 0 0 5px rgba(0, 121, 107, 0.2);
+    }
+    /* Captcha Area */
+    .captcha-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px dashed #ccc;
+    }
+    .captcha-box {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 8px;
+      background: linear-gradient(45deg, #e0e0e0 25%, #f5f5f5 25%, #f5f5f5 50%, #e0e0e0 50%, #e0e0e0 75%, #f5f5f5 75%, #f5f5f5 100%);
+      background-size: 20px 20px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      color: #004d40;
+      user-select: none;
+      text-decoration: line-through;
+    }
+    .btn-verify {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .btn-verify:hover {
+      background-color: #004d40;
+    }
+    .back-btn {
+      margin-top: 20px;
+      color: #00796b;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      cursor: pointer;
+      text-align: center;
+      width: 100%;
+    }
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <h1>বাংলাদেশ ওভারসিজ এমপ্লয়মেন্ট অ্যান্ড সার্ভিসেস লিঃ (বোয়েসেল)</h1>
+    <p>Bangladesh Overseas Employment and Services Limited (BOESL)</p>
+  </div>
+
+  <div class="card">
+    <!-- Home View -->
+    <div id="homeView">
+      <h2 class="title">Registration</h2>
+      
+      <div class="info-box">
+        <p><strong>“আগে আসলে আগে পাবেন” (First Come, First Served)</strong> ভিত্তিতে নিবন্ধন কার্যক্রমের গাইডলাইন ও সময়সীমা নিচে দেওয়া হলো:</p>
+        <p>নিবন্ধন সাইট: <strong>https://eps.boesl.gov.bd/2026/</strong></p>
+        <p class="highlight-yellow">(Google Chrome-এ New Incognito Tab বা Firefox ব্যবহার করে নিবন্ধনের পরামর্শ)</p>
+        <p style="margin-top: 8px;"><strong>নিবন্ধনের সময়:</strong> ১৪ জুলাই সকাল ১০টা থেকে ১৬ জুলাই ২০২৬ তারিখ বিকাল ৪টা পর্যন্ত অনলাইন নিবন্ধন কার্যক্রম "আগে আসলে আগে পাবেন" (First Come, First Served) পরিচালিত হবে।</p>
+      </div>
+
+      <div class="terms-container">
+        <p>এমপ্লয়মেন্ট পারমিট সিস্টেম (ইপিএস) কর্মসূচির আওতায় নির্ধারিত ১৫৭ টি অনুচ্ছেদধারী দেশে থেকে কোরিয়ান ভাষায় দক্ষতা, শারীরিক সক্ষমতা এবং অন্যান্য নির্ধারিত যোগ্যতার ভিত্তিতে কোরিয়া প্রজাতন্ত্রের হিউম্যান রিসোর্স ডেভেলপমেন্ট সার্ভিস অফ কোরিয়া (এইচআরডি কোরিয়া) যোগ্য প্রার্থীদের জব রোস্টারে অন্তর্ভুক্ত করে। পরবর্তীতে কোরিয়ান নিয়োগকর্তারা কর্মী চাহিদা ও কর্মসংস্থান মন্ত্রণালয়ের অধীনে জব রোস্টারসমূহ এবং রোস্টারে অন্তর্ভুক্ত প্রার্থীদের মধ্য থেকে দৈবচয়ন (Random Selection) পদ্ধতিতে ১:৩ অনুপাতে প্রার্থীদের তথ্য সংশ্লিষ্ট নিয়োগকর্তার নিকট উপস্থাপন করে। সংশ্লিষ্ট নিয়োগকর্তা তাঁর প্রয়োজন, চাহিদা ও পছন্দ অনুযায়ী ৩ জন থেকে ১ জন কর্মী নির্বাচন করেন। বিদ্যমান নীতিমালা অনুযায়ী, জব রোস্টারে অন্তর্ভুক্ত হওয়ার পর নির্ধারিত মেয়াদের মধ্যে কোনো প্রার্থী চাকরি না পেলে তার নাম স্বয়ংক্রিয়ভাবে জব রোস্টার থেকে বাতিল (Delete) হয়ে যায়। কোরিয়ান ভাষা পরীক্ষায় চূড়ান্তভাবে উত্তীর্ণ হয়ে জব রোস্টারে অন্তর্ভুক্ত হওয়া মানেই চাকরি প্রাপ্তির নিশ্চয়তা নয়; বরং এটি চাকরির জন্য প্রার্থী নির্বাচনের একটি অংশ।</p>
+        <p>দুই সরকারের মধ্যে সম্পাদিত সমঝোতা স্মারক অনুযায়ী ২০২৩ সালের কোরিয়ান ভাষা পরীক্ষায় অংশগ্রহণের জন্য প্রাথমিক যোগ্যতা যাচাইয়ের অংশ হিসেবে নিবন্ধন সম্পন্ন করছি। আমি কোরিয়ান ভাষা পরীক্ষায় অংশগ্রহণের জন্য নিবন্ধন করছি না; আমি অঙ্গীকার করছি যে, কোরিয়ান ভাষা পরীক্ষায় চূড়ান্তভাবে উত্তীর্ণ হলে এবং সব অ্যাপ্লিকেশন সম্পন্নকরার পর আমার নাম জব রোস্টারে অন্তর্ভুক্ত হবে। কোরিয়ান ভাষা পরীক্ষায় অংশগ্রহণের জন্য নিবন্ধন সম্পন্ন করছি না; আমি অঙ্গীকার করছি যে, কোরিয়ান ভাষা পরীক্ষায় চূড়ান্তভাবে উত্তীর্ণ হলে এবং সব অ্যাপ্লিকেশন সম্পন্নকরার পর আমার নাম জব রোস্টারে অন্তর্ভুক্ত হবে। কোরিয়ান ভাষা পরীক্ষায় অংশগ্রহণের যোগ্যতা অর্জনের লক্ষ্যে এই প্রক্রিয়ায় কোনো তথ্য গোপন বা অসত্য তথ্য প্রদান করলে আমার নিবন্ধন বাতিল হবে।</p>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-submit" onclick="showFormView()">Submit Application</button>
+        <a href="admit-card.html" class="btn btn-admit">Download Admit Card</a>
+      </div>
+    </div>
+
+    <!-- Passport & Captcha Verification View -->
+    <div id="formView" class="form-container">
+      <h2 class="title">Verification (Step 1)</h2>
+      <form id="step1Form">
+        <!-- Passport Number -->
+        <div class="form-group">
+          <label for="passportNo">Passport No.</label>
+          <input type="text" id="passportNo" name="passport" required placeholder="Enter Passport Number (e.g. XY1234567)">
+        </div>
+        
+        <!-- Captcha -->
+        <div class="form-group">
+          <label>Captcha</label>
+          <div class="captcha-container">
+            <div class="captcha-box" id="captchaVal">c6y5r</div>
+          </div>
+          <input type="text" id="captchaInput" name="captcha" required placeholder="Type the captcha above">
+        </div>
+        
+        <button type="submit" class="btn-verify">Submit</button>
+      </form>
+      <div class="back-btn" onclick="showHomeView()">← Back to terms and guidelines</div>
+    </div>
+  </div>
+
+  <script>
+    // Generate captcha code on load
+    const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    function generateCaptcha() {
+      let captcha = "";
+      for (let i = 0; i < 5; i++) {
+        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      document.getElementById("captchaVal").textContent = captcha;
+    }
+
+    function showFormView() {
+      document.getElementById("homeView").style.display = "none";
+      document.getElementById("formView").style.display = "block";
+      generateCaptcha();
+    }
+
+    function showHomeView() {
+      document.getElementById("formView").style.display = "none";
+      document.getElementById("homeView").style.display = "block";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Verification logic on submit
+      document.getElementById("step1Form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const userInput = document.getElementById("captchaInput").value.trim().toLowerCase();
+        const actualCaptcha = document.getElementById("captchaVal").textContent.trim().toLowerCase();
+        
+        if (userInput !== actualCaptcha) {
+          alert("Invalid captcha code. Please try again.");
+          generateCaptcha();
+          document.getElementById("captchaInput").value = "";
+          return;
+        }
+
+        const passportNo = document.getElementById("passportNo").value.trim();
+
+        // Warning Popup matching the PDF Page 2
+        const warningMsg = `Please register through this site only if you fulfill all eligibility requirement as published by BOESL. In case of falsified information or if you register without fulfilling the eligibility requirement mentioned above, legal steps shall be taken against you. (শুধুমাত্র বোয়েসেল কর্তৃক জারিকৃত নির্দেশিকায় উল্লেখিত যোগ্যতা পূরণ করলেই এই সাইটের মাধ্যমে নিবন্ধন করুন। ভুল তথ্য প্রদান কিংবা যোগ্যতা পূরণ না করা সত্ত্বেও নিবন্ধন করলে, পরবর্তীতে আইনানুগ ব্যবস্থা নেয়া হবে।)`;
+        
+        alert(warningMsg);
+
+        // Redirect to Step 2 page
+        window.location.href = `step2.html?passport=${encodeURIComponent(passportNo)}`;
+      });
+    });
+  </script>
+</body>
+</html>

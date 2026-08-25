@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Form Filler - Test Demo Form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0c0a14;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-color: #f5f4f8;
+      --text-muted: #8e8a9f;
+      --primary: #00f0ff;
+      --primary-glow: rgba(0, 240, 255, 0.25);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #0c0a14 0%, #06050b 100%);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 650px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    }
+    
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #fff 0%, #00f0ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    p.desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+    }
+    
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .full-width {
+      grid-column: span 2;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text-color);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+    
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 10px var(--primary-glow);
+    }
+    
+    .radio-group,
+    .checkbox-group {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding: 10px 0;
+    }
+    
+    .radio-option,
+    .checkbox-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    
+    .btn-submit {
+      margin-top: 30px;
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary) 0%, #00b0ff 100%);
+      color: #06050b;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px var(--primary-glow);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 240, 255, 0.4);
+    }
+    
+    /* Autofill visualization test */
+    input:autofill,
+    input:-webkit-autofill {
+      border: 2px solid #34c759;
+      box-shadow: 0 0 0 100vmax #e8f5e9 inset;
+    }
+    
+    @media (max-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .full-width {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-card">
+    <h1>Demo Form</h1>
+    <p class="desc">Use this page to test the Chrome Extension side panel or the Playwright Python script.</p>
+    
+    <form id="testForm" onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
+      <div class="form-grid">
+        
+        <!-- Name -->
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="user_fullname" placeholder="John Doe">
+        </div>
+        
+        <!-- Email -->
+        <div class="form-group">
+          <label for="emailAddr">Email Address</label>
+          <input type="email" id="emailAddr" name="email" placeholder="john@example.com">
+        </div>
+        
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="phoneNum">Phone Number</label>
+          <input type="tel" id="phoneNum" name="phone_number" placeholder="+1 (555) 0199">
+        </div>
+        
+        <!-- Website -->
+        <div class="form-group">
+          <label for="websiteUrl">Website URL</label>
+          <input type="text" id="websiteUrl" name="website" placeholder="https://example.com">
+        </div>
+        
+        <!-- Company -->
+        <div class="form-group">
+          <label for="companyName">Company</label>
+          <input type="text" id="companyName" name="company" placeholder="Acme Corp">
+        </div>
+        
+        <!-- Job Title -->
+        <div class="form-group">
+          <label for="jobTitle">Job Title</label>
+          <input type="text" id="jobTitle" name="title" placeholder="Software Engineer">
+        </div>
+        
+        <!-- Address -->
+        <div class="form-group full-width">
+          <label for="streetAddr">Street Address</label>
+          <input type="text" id="streetAddr" name="address" placeholder="123 Main St">
+        </div>
+        
+        <!-- City -->
+        <div class="form-group">
+          <label for="cityName">City</label>
+          <input type="text" id="cityName" name="city" placeholder="Springfield">
+        </div>
+        
+        <!-- State -->
+        <div class="form-group">
+          <label for="stateName">State / Province</label>
+          <input type="text" id="stateName" name="state" placeholder="IL">
+        </div>
+        
+        <!-- Zip -->
+        <div class="form-group">
+          <label for="zipCode">Zip / Postal Code</label>
+          <input type="text" id="zipCode" name="zip" placeholder="62701">
+        </div>
+        
+        <!-- Country -->
+        <div class="form-group">
+          <label for="countryName">Country</label>
+          <input type="text" id="countryName" name="country" placeholder="United States">
+        </div>
+        
+        <!-- Role Preference (Dropdown option) -->
+        <div class="form-group full-width">
+          <label for="industrySelect">Industry</label>
+          <select id="industrySelect" name="industry">
+            <option value="">Choose Industry...</option>
+            <option value="tech">Technology</option>
+            <option value="finance">Finance</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="education">Education</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <!-- Checkbox option -->
+        <div class="form-group full-width">
+          <label>Subscriptions</label>
+          <div class="checkbox-group">
+            <label class="checkbox-option">
+              <input type="checkbox" id="subscribeNews" name="newsletter" value="yes">
+              Subscribe to newsletter
+            </label>
+          </div>
+        </div>
+        
+      </div>
+      
+      <button type="submit" class="btn-submit">Submit Form</button>
+    </form>
+  </div>
+
+</body>
+</html>

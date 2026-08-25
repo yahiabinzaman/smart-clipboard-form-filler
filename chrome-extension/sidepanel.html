@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Clipboard Form Filler</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo-area">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 14H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 18H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <rect x="9" y="1" width="6" height="3" rx="1.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>Smart Filler</h1>
+          <span class="subtitle">Clipboard Form Automator</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Paste Area -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Paste Raw Text / Chat</h2>
+        <span class="tooltip" title="Paste any text, chat, or raw profile. The extension will automatically extract fields like Name, Email, Address, etc.">?</span>
+      </div>
+      <div class="textarea-wrapper">
+        <textarea id="rawInput" placeholder="Hi! My name is John Doe, email is john@example.com, and phone is +1-555-0199..."></textarea>
+        <button id="parseBtn" class="btn secondary-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 4V20M12 4L8 8M12 4L16 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Extract Fields
+        </button>
+      </div>
+    </section>
+
+    <!-- CSV Importer -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Import CSV File (50-100+ Data)</h2>
+        <span class="tooltip" title="Load a CSV sheet containing columns for multiple records. You can select records from a list to fill them.">?</span>
+      </div>
+      <div class="csv-importer-wrapper">
+        <div class="csv-row">
+          <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+          <button id="importCsvBtn" class="btn secondary-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 17V21M12 21H16M12 21H8M12 17L8 13M12 17L16 13M12 3V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Upload CSV
+          </button>
+          <span id="csvFileName" class="file-name-label">No file loaded</span>
+        </div>
+        <div id="csvNavigator" class="csv-navigator hidden">
+          <div class="navigator-controls">
+            <button id="prevRecordBtn" class="text-btn">◀ Prev</button>
+            <select id="csvRecordSelect">
+              <option value="">-- Choose Record --</option>
+            </select>
+            <button id="nextRecordBtn" class="text-btn">Next ▶</button>
+          </div>
+          <div id="csvRecordStatus" class="record-status-label">Record 0 of 0</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Main Actions -->
+    <div class="action-bar">
+      <button id="autofillBtn" class="btn primary-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Auto-Fill Active Tab
+      </button>
+    </div>
+
+    <!-- Parsed Fields Area -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Extracted Fields</h2>
+        <button id="addFieldBtn" class="text-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          Add Field
+        </button>
+      </div>
+      <div id="fieldsContainer" class="fields-list">
+        <div class="empty-state" id="emptyState">
+          No fields extracted yet. Paste text above or add one manually.
+        </div>
+      </div>
+    </section>
+
+    <!-- Profiles & Storage -->
+    <section class="section profile-section">
+      <div class="section-header">
+        <h2>Saved Profiles</h2>
+      </div>
+      <div class="profile-controls">
+        <select id="profileSelect">
+          <option value="">-- Select a Profile --</option>
+        </select>
+        <div class="profile-actions">
+          <input type="text" id="profileNameInput" placeholder="New Profile Name">
+          <button id="saveProfileBtn" class="btn outline-btn" title="Save current fields to this profile">Save</button>
+          <button id="deleteProfileBtn" class="btn danger-btn" title="Delete selected profile" disabled>🗑️</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Notifications -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
