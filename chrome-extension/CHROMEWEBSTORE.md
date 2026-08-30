@@ -82,11 +82,14 @@ Not applicable (No data collected or stored off-device)
 
 ## Developer Info
 
-**Publisher Name**
-Colorlab Studios
+**Developer / Author**
+Yahia Bin Zaman
 
-**Contact Email**
-arman@example.com
+**Facebook Profile**
+https://www.facebook.com/YahiaBinZaman/
+
+**GitHub Profile**
+https://github.com/yahiabinzaman
 
 ## Version History
 

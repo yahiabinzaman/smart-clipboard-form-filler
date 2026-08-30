@@ -99,6 +99,15 @@ playwright install
 
 ---
 
+## 👨‍💻 Author & Connect
+
+**Yahia Bin Zaman**
+
+- **Facebook:** [YahiaBinZaman](https://www.facebook.com/YahiaBinZaman/)
+- **GitHub:** [@yahiabinzaman](https://github.com/yahiabinzaman)
+
+---
+
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
