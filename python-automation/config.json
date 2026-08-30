@@ -1,13 +1,13 @@
 {
-  "name": "Arman Vai",
-  "email": "arman@example.com",
+  "name": "John Doe",
+  "email": "john.doe@example.com",
   "phone": "+1 (555) 0199",
   "address": "123 Automation Lane",
   "city": "Springfield",
   "state": "IL",
   "zip": "62701",
   "country": "United States",
-  "company": "Colorlab Studios",
-  "title": "Lead Automator",
+  "company": "Tech Solutions",
+  "title": "Software Engineer",
   "website": "https://example.com"
 }

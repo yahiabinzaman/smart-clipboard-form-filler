@@ -599,10 +599,17 @@ textarea::placeholder {
   background: var(--md-sys-color-surface-container);
 }
 
+.csv-button-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
 .file-name-label {
   font-size: 0.74rem;
   color: var(--md-sys-color-secondary);
 }
+
 
 .csv-navigator {
   display: flex;

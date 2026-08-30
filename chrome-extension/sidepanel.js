@@ -27,8 +27,10 @@ const transformDateIso = document.getElementById("transformDateIso");
 // DOM Elements - CSV Tab
 const csvFileInput = document.getElementById("csvFileInput");
 const importCsvBtn = document.getElementById("importCsvBtn");
+const clearCsvBtn = document.getElementById("clearCsvBtn");
 const csvFileName = document.getElementById("csvFileName");
 const csvNavigator = document.getElementById("csvNavigator");
+
 const csvSearchInput = document.getElementById("csvSearchInput");
 const prevRecordBtn = document.getElementById("prevRecordBtn");
 const csvRecordSelect = document.getElementById("csvRecordSelect");
@@ -197,8 +199,10 @@ function setupListeners() {
 
   // CSV Listeners
   importCsvBtn.addEventListener("click", () => csvFileInput.click());
+  if (clearCsvBtn) clearCsvBtn.addEventListener("click", handleClearCsv);
   csvFileInput.addEventListener("change", handleCsvUpload);
   csvRecordSelect.addEventListener("change", handleCsvRecordSelect);
+
   prevRecordBtn.addEventListener("click", () => navigateRecord(-1));
   nextRecordBtn.addEventListener("click", () => navigateRecord(1));
   csvSearchInput.addEventListener("input", handleCsvSearch);
@@ -545,6 +549,13 @@ async function handleFillAndNext() {
 async function loadCsvData() {
   try {
     const res = await chrome.storage.local.get(["csvRecords", "csvIndex", "csvName"]);
+    
+    // Purge old personal dataset cache if found
+    if (res.csvName && (res.csvName.includes("Mizi") || res.csvName.includes("sample_profiles"))) {
+      await chrome.storage.local.remove(["csvRecords", "csvIndex", "csvName"]);
+      return;
+    }
+
     if (res.csvRecords && res.csvRecords.length > 0) {
       loadedCsvRecords = res.csvRecords;
       filteredCsvIndices = loadedCsvRecords.map((_, i) => i);
@@ -563,6 +574,20 @@ async function loadCsvData() {
     console.error("CSV load error:", e);
   }
 }
+
+async function handleClearCsv() {
+  loadedCsvRecords = [];
+  filteredCsvIndices = [];
+  currentCsvIndex = -1;
+  csvFileName.textContent = "No file loaded";
+  csvRecordTotal.textContent = "0 records";
+  csvFileInput.value = "";
+  csvNavigator.classList.add("hidden");
+  
+  await chrome.storage.local.remove(["csvRecords", "csvIndex", "csvName"]);
+  showToast("CSV dataset cleared");
+}
+
 
 function handleCsvUpload(e) {
   const file = e.target.files[0];

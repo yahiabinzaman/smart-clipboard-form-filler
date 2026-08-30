@@ -39,7 +39,8 @@ An intelligent, multi-platform form automation suite that parses unstructured te
 │   ├── form_filler.py      # Core CLI automation script
 │   ├── config.json         # Example profile data
 │   └── requirements.txt    # Python dependencies
-├── mock-boesel/            # Mock multi-step registration portal for local testing
+├── mock-portal/            # Mock multi-step registration portal for local testing
+├── sample_applicants.csv   # Generic sample dataset for testing bulk CSV workflows
 ├── demo_form.html          # Interactive HTML demo form
 └── README.md
 ```
@@ -58,12 +59,10 @@ The Chrome Extension opens a persistent **Side Panel** that remains accessible a
 ### Tab Capabilities:
 1. **⚡ Fill & Parse**: Paste chat messages or raw text, click **Extract Fields**, or click **Scan Page Form** to pull all inputs from the current page.
 2. **📊 Bulk CSV**: Upload CSV datasets, search candidates, and use **Fill & Advance Next** to fill candidate records sequentially.
-3. **⚙️ Custom Rules**: Create your own synonyms and mapping aliases for specialized sites (BOESL, Government portals, Visa applications).
+3. **⚙️ Custom Rules**: Create your own synonyms and mapping aliases for specialized sites.
 4. **💾 Profiles & Backup**: Save reusable templates, or export/import complete JSON backups.
 5. **👨‍💻 Author**: Direct links to social and portfolio profiles.
 
-4. Click **Auto-Fill Active Tab** to populate the form on the current web page.
-5. Save frequently used values as **Profiles** for one-click reuse.
 
 ---
 

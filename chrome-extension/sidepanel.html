@@ -155,14 +155,18 @@ Address: Dhaka, Bangladesh"></textarea>
         
         <div class="csv-upload-box" id="csvDropZone">
           <input type="file" id="csvFileInput" accept=".csv,.tsv,.txt" style="display: none;">
-          <button id="importCsvBtn" class="btn secondary-btn full-w">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            Choose CSV / Excel File
-          </button>
+          <div class="csv-button-row full-w">
+            <button id="importCsvBtn" class="btn secondary-btn flex-grow">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Choose CSV / Excel File
+            </button>
+            <button id="clearCsvBtn" class="btn toolbar-btn-danger" title="Unload and clear CSV dataset">Clear</button>
+          </div>
           <span id="csvFileName" class="file-name-label">No file loaded</span>
         </div>
 
         <div id="csvNavigator" class="csv-navigator hidden">
+
           <div class="nav-header">
             <span class="sub-label">Active Record:</span>
             <input type="text" id="csvSearchInput" placeholder="Search by name, phone, etc..." class="sub-input csv-search">
