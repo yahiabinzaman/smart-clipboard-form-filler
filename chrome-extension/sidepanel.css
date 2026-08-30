@@ -826,3 +826,32 @@ textarea:focus {
   transform: translateY(16px);
   pointer-events: none;
 }
+
+/* App Global Footer */
+.app-footer {
+  margin-top: 6px;
+  padding: 10px 4px 4px;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.app-footer span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.footer-author-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.footer-author-link:hover {
+  color: #fff;
+  background: rgba(0, 240, 255, 0.15);
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
