@@ -99,17 +99,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   updateFieldCounter();
 });
 
-// Toast Helper
+// Toast Helper (Google M3 Snackbar)
 function showToast(message, isSuccess = true) {
   toast.textContent = message;
-  toast.style.borderColor = isSuccess ? "var(--primary-color)" : "var(--danger-color)";
-  toast.style.boxShadow = isSuccess ? "0 8px 24px rgba(0,0,0,0.6), 0 0 15px var(--primary-glow)" : "0 8px 24px rgba(0,0,0,0.6), 0 0 15px var(--danger-glow)";
+  toast.style.borderLeft = isSuccess ? "4px solid var(--md-sys-color-primary)" : "4px solid var(--md-sys-color-error)";
   toast.classList.remove("hidden");
   
   setTimeout(() => {
     toast.classList.add("hidden");
-  }, 3200);
+  }, 3000);
 }
+
 
 // Navigation Tabs
 function setupNavigation() {
