@@ -1,15 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "Smart Clipboard Form Filler",
-  "version": "1.0.0",
-  "description": "Autofills web forms from chat history or clipboard text using smart fuzzy matching.",
+  "name": "Smart Clipboard Form Filler Pro",
+  "version": "1.1.0",
+  "description": "Universal intelligent form automator: parses clipboard/chat text, bulk CSV entries, customizable field mappings & 1-click autofill.",
   "icons": {
     "16": "icons/icon-16.png",
     "48": "icons/icon-48.png",
     "128": "icons/icon-128.png"
   },
   "action": {
-    "default_title": "Open Clipboard Form Filler"
+    "default_title": "Open Smart Form Filler"
   },
   "permissions": [
     "sidePanel",
@@ -25,5 +25,15 @@
   },
   "side_panel": {
     "default_path": "sidepanel.html"
+  },
+  "commands": {
+    "_execute_side_panel": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+U",
+        "mac": "Command+Shift+U"
+      },
+      "description": "Toggle Smart Form Filler Side Panel"
+    }
   }
 }
+

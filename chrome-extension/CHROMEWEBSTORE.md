@@ -94,12 +94,13 @@ Yahia Bin Zaman (Yahia Mahmud)
 
 ## Version History
 
-
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|
-| 1.0.0 | 2026-07-07 | Initial release of Chrome Extension with Side Panel UI and local fuzzy-match parser. | Draft |
+| 1.1.0 | 2026-08-30 | Added Page Form Scanner, Bulk CSV Sequential Autofill, Custom Mapping Rules Editor, Data Formatters (UPPER, Title, Date, Phone), React/Vue deep setter engine, and complete JSON Backup sync. | Ready |
+| 1.0.0 | 2026-07-07 | Initial release of Chrome Extension with Side Panel UI and local fuzzy-match parser. | Archived |
 
 ## Review Notes
 
 ### Known Issues / Limitations
 - Does not autofill fields embedded within nested cross-origin `iframe` elements due to browser security restrictions.
+

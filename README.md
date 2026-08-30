@@ -1,32 +1,39 @@
-# ⚡ Smart Form Filler & Clipboard Automation Suite
+# ⚡ Smart Form Filler & Clipboard Automation Suite Pro (v1.1.0)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Chrome Extension](https://img.shields.io/badge/Chrome_Extension-Manifest_V3-blue.svg)](https://developer.chrome.com/docs/extensions/mv3/)
+[![Chrome Extension](https://img.shields.io/badge/Chrome_Extension-Manifest_V3_Pro-blue.svg)](https://developer.chrome.com/docs/extensions/mv3/)
 [![Playwright](https://img.shields.io/badge/Automation-Playwright_Python-green.svg)](https://playwright.dev/python/)
 
-An intelligent, multi-platform form automation suite that parses unstructured text (chat messages, emails, clipboard snippets) and auto-fills complex web forms with smart fuzzy field matching.
+An intelligent, multi-platform form automation suite that parses unstructured text (chat messages, emails, clipboard snippets), processes bulk CSV/Excel candidate records, and auto-fills complex web forms with customizable fuzzy field matching.
 
 ---
 
-## 🌟 Highlights
+## 🌟 Highlights & Advanced Features
 
 - **🧠 Smart Fuzzy Matching Engine**: Automatically maps unstructured fields to form inputs using `name`, `id`, `placeholder`, `aria-label`, class names, and surrounding `<label>` text with comprehensive synonym recognition.
-- **🌐 Dual Architecture**:
-  - **Chrome Extension (Side Panel)**: Interactive, on-the-fly form filling directly in your browser.
-  - **Python Automation (Playwright CLI)**: Headless or headful batch automation for repetitive registrations and tasks.
-- **⚛️ Modern Web Framework Compatible**: Triggers native DOM events (`input`, `change`, `blur`, `compositionend`) to ensure React, Angular, Vue, Svelte, and Next.js form state managers sync correctly.
-- **🎯 Visual Verification**: Highlights successfully populated fields with visual cues so you can review before submission.
+- **🔍 Active Page Form Scanner**: 1-click **Scan Page Form** button inspects all inputs, selects, and checkboxes on the active web page and auto-generates field templates in your sidepanel.
+- **📊 Bulk CSV & Dataset Processor**: Upload spreadsheets with 50-500+ records, search candidates, and use **⚡ Fill & Advance Next** for ultra-fast repetitive data entry.
+- **⚙️ Customizable Field Mapping Rules**: Add custom synonym aliases (e.g. `nid` -> `voter_id`, `babar_nam` -> `father_name`), custom regex patterns, and export/import rule presets.
+- **🔤 Built-in Data Sanitizers & Formatters**:
+  - **UPPER**: Instantly uppercase all text (ideal for passports, government forms).
+  - **Title Case**: Capitalize names and addresses properly.
+  - **Clean Phone**: Format phone numbers cleanly with standard prefixing.
+  - **ISO Date**: Automatically convert dates (`DD/MM/YYYY` / `DD-MM-YYYY` -> `YYYY-MM-DD`).
+- **⚛️ Modern Web Framework Compatible**: Deep prototype property setters and synthetic DOM events (`input`, `change`, `blur`, `keyup`) ensure React 16+, Angular, Vue 3, Svelte, and Next.js form state managers never overwrite entered data.
+- **🎯 Visual HUD & Highlight Feedback**: In-page floating HUD pill and glowing outlines verify filled inputs.
+- **💾 Full Backup & Sync**: 1-click JSON export/import of all profiles, datasets, and custom mapping rules.
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-├── chrome-extension/       # Manifest V3 Chrome Extension (Side Panel UI)
+├── chrome-extension/       # Manifest V3 Chrome Extension Pro (Side Panel UI)
 │   ├── manifest.json       # Extension metadata and permissions
-│   ├── sidepanel.html      # Side panel layout
-│   ├── sidepanel.js        # Parser, field extractor, and profile manager
-│   ├── content-script.js   # In-page DOM inspector and autofill injector
+│   ├── sidepanel.html      # 5-Tab Side panel layout (Fill, CSV, Rules, Profiles, Author)
+│   ├── sidepanel.js        # Parser, scanner, CSV engine, rules & profile manager
+│   ├── sidepanel.css       # Dark glassmorphism styling
+│   ├── content-script.js   # In-page DOM inspector, scanner, and framework-safe injector
 │   └── icons/              # Extension icons
 ├── python-automation/      # Standalone Playwright Python automation
 │   ├── form_filler.py      # Core CLI automation script
@@ -41,23 +48,20 @@ An intelligent, multi-platform form automation suite that parses unstructured te
 
 ## 🚀 1. Chrome Extension (Interactive Side Panel)
 
-The Chrome Extension opens a persistent **Side Panel** that remains accessible across tabs.
+The Chrome Extension opens a persistent **Side Panel** that remains accessible across tabs (`Cmd+Shift+U` / `Ctrl+Shift+U`).
 
 ### Installation:
 1. Open Google Chrome and navigate to `chrome://extensions`.
 2. Toggle on **Developer mode** in the top right corner.
 3. Click **Load unpacked** and select the `chrome-extension/` directory.
 
-### How to Use:
-1. Click the extension icon in your Chrome toolbar to open the Side Panel.
-2. Paste unstructured text (e.g. from WhatsApp, email, or a document):
-   ```
-   Name: John Doe
-   Email: john.doe@example.com
-   Phone: +1 555-0199
-   Address: 123 Automation Way
-   ```
-3. The parser extracts recognized fields into an editable key-value list.
+### Tab Capabilities:
+1. **⚡ Fill & Parse**: Paste chat messages or raw text, click **Extract Fields**, or click **Scan Page Form** to pull all inputs from the current page.
+2. **📊 Bulk CSV**: Upload CSV datasets, search candidates, and use **Fill & Advance Next** to fill candidate records sequentially.
+3. **⚙️ Custom Rules**: Create your own synonyms and mapping aliases for specialized sites (BOESL, Government portals, Visa applications).
+4. **💾 Profiles & Backup**: Save reusable templates, or export/import complete JSON backups.
+5. **👨‍💻 Author**: Direct links to social and portfolio profiles.
+
 4. Click **Auto-Fill Active Tab** to populate the form on the current web page.
 5. Save frequently used values as **Profiles** for one-click reuse.
 

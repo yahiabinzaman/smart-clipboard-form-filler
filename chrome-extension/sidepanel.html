@@ -3,129 +3,296 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Clipboard Form Filler</title>
+  <title>Smart Clipboard Form Filler Pro</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="sidepanel.css">
 </head>
 <body>
-  <div class="container">
+  <div class="app-shell">
     <!-- Header -->
-    <header>
+    <header class="app-header">
       <div class="logo-area">
         <div class="logo-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="5" y="2" width="14" height="20" rx="3" stroke="currentColor" stroke-width="2"/>
-            <path d="M9 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M9 14H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M9 18H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <rect x="9" y="1" width="6" height="3" rx="1.5" fill="currentColor"/>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="url(#boltGrad)" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="boltGrad" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00f0ff"/>
+                <stop offset="1" stop-color="#bd00ff"/>
+              </linearGradient>
+            </defs>
           </svg>
         </div>
         <div class="logo-text">
-          <h1>Smart Filler</h1>
-          <span class="subtitle">Clipboard Form Automator</span>
+          <div class="logo-title-row">
+            <h1>Smart Filler</h1>
+            <span class="pro-badge">PRO v1.1</span>
+          </div>
+          <span class="subtitle">Universal Intelligent Form Automator</span>
         </div>
       </div>
     </header>
 
-    <!-- Paste Area -->
-    <section class="section">
-      <div class="section-header">
-        <h2>Paste Raw Text / Chat</h2>
-        <span class="tooltip" title="Paste any text, chat, or raw profile. The extension will automatically extract fields like Name, Email, Address, etc.">?</span>
+    <!-- Navigation Tabs -->
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="tab-fill">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        <span>Fill</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-csv">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+        <span>Bulk CSV</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-rules">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Rules</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-profiles">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        <span>Profiles</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-author">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Author</span>
+      </button>
+    </nav>
+
+    <!-- TAB 1: FILL & PARSE -->
+    <main id="tab-fill" class="tab-pane active">
+      <!-- Quick Action Toolbar -->
+      <div class="quick-toolbar">
+        <button id="scanPageBtn" class="btn toolbar-btn" title="Inspect inputs and labels on the active web page">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Scan Page Form
+        </button>
+        <button id="pasteClipboardBtn" class="btn toolbar-btn" title="Paste and parse current clipboard text">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+          Paste & Extract
+        </button>
+        <button id="clearAllBtn" class="btn toolbar-btn-danger" title="Clear all fields">Clear</button>
       </div>
-      <div class="textarea-wrapper">
-        <textarea id="rawInput" placeholder="Hi! My name is John Doe, email is john@example.com, and phone is +1-555-0199..."></textarea>
-        <button id="parseBtn" class="btn secondary-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 4V20M12 4L8 8M12 4L16 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Extract Fields
+
+      <!-- Raw Text Input -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Paste Raw Text / Chat / Data</h2>
+          <span class="badge" id="rawCharCount">0 chars</span>
+        </div>
+        <div class="textarea-wrapper">
+          <textarea id="rawInput" placeholder="Paste unstructured chat, resume, applicant bio, email or key:value lines here...
+Example:
+Name: Yahia Bin Zaman
+Passport: A12345678
+DOB: 15/08/1998
+Phone: +8801700000000
+Email: yahia@example.com
+Address: Dhaka, Bangladesh"></textarea>
+          <div class="btn-row">
+            <button id="parseBtn" class="btn secondary-btn flex-grow">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4V20M12 4L8 8M12 4L16 8"/></svg>
+              Extract & Organize Fields
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Text Transform / Sanitizer Options -->
+      <div class="transform-strip">
+        <span class="strip-label">Formatting:</span>
+        <button class="pill-btn" id="transformUpper" title="Convert all text to UPPERCASE">UPPER</button>
+        <button class="pill-btn" id="transformTitle" title="Convert names and addresses to Title Case">Title Case</button>
+        <button class="pill-btn" id="transformCleanPhone" title="Format phone numbers cleanly">Clean Phone</button>
+        <button class="pill-btn" id="transformDateIso" title="Convert dates to YYYY-MM-DD">ISO Date</button>
+      </div>
+
+      <!-- Main Action Primary Button -->
+      <div class="action-bar sticky-action">
+        <button id="autofillBtn" class="btn primary-btn pulse-glow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 13L9 17L19 7"/></svg>
+          Auto-Fill Active Tab
         </button>
       </div>
-    </section>
 
-    <!-- CSV Importer -->
-    <section class="section">
-      <div class="section-header">
-        <h2>Import CSV File (50-100+ Data)</h2>
-        <span class="tooltip" title="Load a CSV sheet containing columns for multiple records. You can select records from a list to fill them.">?</span>
-      </div>
-      <div class="csv-importer-wrapper">
-        <div class="csv-row">
-          <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
-          <button id="importCsvBtn" class="btn secondary-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 17V21M12 21H16M12 21H8M12 17L8 13M12 17L16 13M12 3V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Upload CSV
+      <!-- Extracted Fields List -->
+      <section class="section">
+        <div class="section-header">
+          <div class="header-left">
+            <h2>Extracted Fields</h2>
+            <span class="field-counter" id="fieldCountBadge">0</span>
+          </div>
+          <div class="header-right">
+            <button id="addFieldBtn" class="text-btn">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5V19M5 12H19"/></svg>
+              Add Field
+            </button>
+          </div>
+        </div>
+
+        <div class="search-fields-row">
+          <input type="text" id="filterFieldsInput" placeholder="Filter extracted fields..." class="sub-input">
+        </div>
+
+        <div id="fieldsContainer" class="fields-list">
+          <div class="empty-state" id="emptyState">
+            <p>No fields extracted yet.</p>
+            <span>Paste text above, click <b>Scan Page Form</b>, or add manually.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- TAB 2: BULK CSV / TSV RECORDS -->
+    <main id="tab-csv" class="tab-pane">
+      <section class="section">
+        <div class="section-header">
+          <h2>Bulk CSV / Excel Dataset</h2>
+          <span class="badge" id="csvRecordTotal">0 records</span>
+        </div>
+        <p class="section-desc">Load a CSV spreadsheet with 50-500+ candidate or client records. Fill forms one by one with 1-click progression.</p>
+        
+        <div class="csv-upload-box" id="csvDropZone">
+          <input type="file" id="csvFileInput" accept=".csv,.tsv,.txt" style="display: none;">
+          <button id="importCsvBtn" class="btn secondary-btn full-w">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Choose CSV / Excel File
           </button>
           <span id="csvFileName" class="file-name-label">No file loaded</span>
         </div>
+
         <div id="csvNavigator" class="csv-navigator hidden">
-          <div class="navigator-controls">
-            <button id="prevRecordBtn" class="text-btn">◀ Prev</button>
-            <select id="csvRecordSelect">
-              <option value="">-- Choose Record --</option>
-            </select>
-            <button id="nextRecordBtn" class="text-btn">Next ▶</button>
+          <div class="nav-header">
+            <span class="sub-label">Active Record:</span>
+            <input type="text" id="csvSearchInput" placeholder="Search by name, phone, etc..." class="sub-input csv-search">
           </div>
+          
+          <div class="navigator-controls">
+            <button id="prevRecordBtn" class="nav-arrow-btn" title="Previous Record">◀</button>
+            <select id="csvRecordSelect"></select>
+            <button id="nextRecordBtn" class="nav-arrow-btn" title="Next Record">▶</button>
+          </div>
+          
           <div id="csvRecordStatus" class="record-status-label">Record 0 of 0</div>
+
+          <div class="csv-action-cluster">
+            <button id="fillCurrentCsvBtn" class="btn secondary-btn">Fill This Record</button>
+            <button id="fillAndNextBtn" class="btn primary-btn flex-grow">⚡ Fill & Advance Next</button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-
-    <!-- Main Actions -->
-    <div class="action-bar">
-      <button id="autofillBtn" class="btn primary-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 13L9 17L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Auto-Fill Active Tab
-      </button>
-    </div>
-
-    <!-- Parsed Fields Area -->
-    <section class="section">
-      <div class="section-header">
-        <h2>Extracted Fields</h2>
-        <button id="addFieldBtn" class="text-btn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-          Add Field
-        </button>
-      </div>
-      <div id="fieldsContainer" class="fields-list">
-        <div class="empty-state" id="emptyState">
-          No fields extracted yet. Paste text above or add one manually.
+    <!-- TAB 3: CUSTOM RULES & MAPPINGS -->
+    <main id="tab-rules" class="tab-pane">
+      <section class="section">
+        <div class="section-header">
+          <h2>Custom Field Mappings</h2>
+          <span class="tooltip" title="Define your own synonyms and aliases so your field keys match form inputs with 100% accuracy.">?</span>
         </div>
-      </div>
-    </section>
+        <p class="section-desc">Add custom mapping rules for specialized websites (BOESL, Government portals, Job boards, Bank forms).</p>
 
-    <!-- Profiles & Storage -->
-    <section class="section profile-section">
-      <div class="section-header">
-        <h2>Saved Profiles</h2>
-      </div>
-      <div class="profile-controls">
-        <select id="profileSelect">
-          <option value="">-- Select a Profile --</option>
-        </select>
-        <div class="profile-actions">
-          <input type="text" id="profileNameInput" placeholder="New Profile Name">
-          <button id="saveProfileBtn" class="btn outline-btn" title="Save current fields to this profile">Save</button>
-          <button id="deleteProfileBtn" class="btn danger-btn" title="Delete selected profile" disabled>🗑️</button>
+        <div class="rule-creator">
+          <div class="rule-inputs-row">
+            <input type="text" id="newRuleStandard" placeholder="Standard Key (e.g. passport)" class="sub-input">
+            <input type="text" id="newRuleAliases" placeholder="Aliases separated by comma (e.g. pass_no, passport_number)" class="sub-input">
+          </div>
+          <button id="addRuleBtn" class="btn secondary-btn full-w">+ Add Custom Mapping Rule</button>
         </div>
-      </div>
-    </section>
 
-    <!-- Visual Notifications -->
+        <div class="rules-list-container" id="rulesContainer">
+          <!-- Dynamic rules -->
+        </div>
+
+        <div class="rule-presets-row">
+          <button id="resetRulesBtn" class="text-btn">Reset to Default Rules</button>
+          <button id="exportRulesBtn" class="text-btn">Export Rules (JSON)</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- TAB 4: PROFILES & BACKUP -->
+    <main id="tab-profiles" class="tab-pane">
+      <section class="section">
+        <div class="section-header">
+          <h2>Saved Profiles</h2>
+          <span class="badge" id="profileCountBadge">0</span>
+        </div>
+        
+        <div class="profile-controls">
+          <select id="profileSelect">
+            <option value="">-- Select a Profile --</option>
+          </select>
+          
+          <div class="profile-save-row">
+            <input type="text" id="profileNameInput" placeholder="Profile Name (e.g. John Doe - Candidate #1)" class="sub-input">
+            <button id="saveProfileBtn" class="btn secondary-btn">Save</button>
+            <button id="deleteProfileBtn" class="btn danger-btn" disabled title="Delete Profile">🗑️</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Data Backup & Sync</h2>
+        </div>
+        <div class="backup-actions">
+          <button id="exportAllDataBtn" class="btn outline-btn full-w">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export All Profiles & Rules (JSON)
+          </button>
+          
+          <input type="file" id="importBackupInput" accept=".json" style="display: none;">
+          <button id="importAllDataBtn" class="btn secondary-btn full-w">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Import JSON Backup
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- TAB 5: AUTHOR & CONNECT -->
+    <main id="tab-author" class="tab-pane">
+      <section class="section author-card">
+        <div class="author-avatar-row">
+          <div class="author-avatar">YM</div>
+          <div class="author-meta">
+            <h2>Yahia Bin Zaman</h2>
+            <span class="author-title">Yahia Mahmud • Full-Stack Automator</span>
+          </div>
+        </div>
+        
+        <p class="author-bio">Smart Clipboard Form Filler is designed for lightning-fast form automation, bulk applicant processing, and customizable web filling.</p>
+
+        <div class="author-social-links">
+          <a href="https://github.com/yahiabinzaman" target="_blank" class="social-chip github">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/yahia-mahmud-b4095b354/" target="_blank" class="social-chip linkedin">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.behance.net/yahiamahmud" target="_blank" class="social-chip behance">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-4.937 3-3.415 0-5.789-2.261-5.789-5.918 0-3.568 2.378-5.982 5.688-5.982 3.473 0 5.485 2.378 5.485 5.982 0 .438-.047.886-.109 1.282h-8.082c.11 1.758 1.488 2.871 3.031 2.871 1.289 0 2.195-.562 2.726-1.235h1.986zm-5.047-6.262c-1.395 0-2.422.969-2.672 2.469h5.172c-.125-1.531-1.125-2.469-2.5-2.469zm-11.679 8.262h-7v-14h6.781c3.156 0 5.219 1.5 5.219 4.109 0 1.438-.672 2.656-1.781 3.297 1.469.578 2.281 1.953 2.281 3.656 0 2.812-2.125 4.938-5.5 4.938zm-4-8.797h3.359c1.406 0 2.328-.688 2.328-1.922 0-1.172-.891-1.781-2.219-1.781h-3.468v3.703zm0 5.797h3.766c1.609 0 2.625-.797 2.625-2.172 0-1.422-1.078-2.125-2.688-2.125h-3.703v4.297z"/></svg>
+            Behance
+          </a>
+          <a href="https://www.facebook.com/YahiaBinZaman/" target="_blank" class="social-chip facebook">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://www.instagram.com/yahiabinzaman_official/" target="_blank" class="social-chip instagram">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Toast Floating Alert -->
     <div id="toast" class="toast hidden"></div>
   </div>
+
   <script src="sidepanel.js"></script>
 </body>
 </html>
