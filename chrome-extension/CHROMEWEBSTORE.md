@@ -83,15 +83,17 @@ Not applicable (No data collected or stored off-device)
 ## Developer Info
 
 **Developer / Author**
-Yahia Bin Zaman
+Yahia Bin Zaman (Yahia Mahmud)
 
-**Facebook Profile**
-https://www.facebook.com/YahiaBinZaman/
-
-**GitHub Profile**
-https://github.com/yahiabinzaman
+**Profiles & Links**
+- **GitHub:** https://github.com/yahiabinzaman
+- **LinkedIn:** https://www.linkedin.com/in/yahia-mahmud-b4095b354/
+- **Behance:** https://www.behance.net/yahiamahmud
+- **Facebook:** https://www.facebook.com/YahiaBinZaman/
+- **Instagram:** https://www.instagram.com/yahiabinzaman_official/
 
 ## Version History
+
 
 | Version | Date | Changes | Status |
 |---------|------|---------|--------|

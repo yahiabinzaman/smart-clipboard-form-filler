@@ -38,3 +38,16 @@ python form_filler.py --url "https://example.com/contact-form" --clipboard
 ## How it Works
 The script queries all visible inputs, selects, and textareas on the webpage. It extracts labels, names, IDs, placeholders, classes, and ARIA labels. It computes a similarity score for each field against the profile keys and populates the best-matching input.
 After filling, it fires the DOM events (`input`, `change`, `blur`) to satisfy validation on SPA sites (React/Angular/Vue).
+
+---
+
+## 👨‍💻 Author & Connect
+
+**Yahia Bin Zaman (Yahia Mahmud)**
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/yahiabinzaman)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yahia-mahmud-b4095b354/)
+[![Behance](https://img.shields.io/badge/Behance-1769FF?style=for-the-badge&logo=behance&logoColor=white)](https://www.behance.net/yahiamahmud)
+[![Facebook](https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://www.facebook.com/YahiaBinZaman/)
+[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/yahiabinzaman_official/)
+
